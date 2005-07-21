@@ -1,0 +1,16 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort	1969-12-31 17:00:00.000000000 -0700
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort	2005-07-20 18:57:41.568896032 -0600
+@@ -0,0 +1 @@
++21
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP	2003-03-06 13:11:43.000000000 -0700
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP	1969-12-31 17:00:00.000000000 -0700
+@@ -1,7 +0,0 @@
+-{
+-    my $access = $ftp{access} || "undef";
+-    my $ftpServiceStatus = $ftp{status} || "disabled";
+-
+-    $OUT = allow_tcp_in(21,
+-	($access eq 'public') && ($ftpServiceStatus eq 'enabled'));
+-}

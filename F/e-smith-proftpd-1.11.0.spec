@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.11.0
-%define release 23
+%define release 23sme01
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -29,6 +29,7 @@ Patch16: e-smith-proftpd-1.11.0-19.mitel_patch
 Patch17: e-smith-proftpd-1.11.0-20.mitel_patch
 Patch18: e-smith-proftpd-1.11.0-21.mitel_patch
 Patch19: e-smith-proftpd-1.11.0-23.mitel_patch
+Patch20: e-smith-proftpd-1.11.0-masqchange.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -39,6 +40,10 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Wed Jul 20 2005 Shad L. Lords <slords@mail.com>
+- [1.11.0-23sme01]
+- Move masq fragement from template to db [SF: 1241416]
+
 * Tue Jun 14 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.11.0-23]
 - Re-expand peers/{0,local} in remoteaccess-update, as permissions
@@ -480,6 +485,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
+%patch20 -p1
 
 %build
 perl createlinks
