@@ -1,0 +1,14 @@
+Index: e-smith-proftpd/createlinks
+diff -u e-smith-proftpd/createlinks:1.14 e-smith-proftpd/createlinks:1.15
+--- e-smith-proftpd/createlinks:1.14	Wed Mar 16 19:48:45 2005
++++ e-smith-proftpd/createlinks	Wed Mar 23 20:58:36 2005
+@@ -37,7 +37,7 @@
+ foreach my $event (qw(
+     remoteaccess-update))
+ {
+-    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/ftp");
++    safe_symlink("sigusr1", "root/etc/e-smith/events/$event/services2adjust/ftp");
+ }
+ 
+ foreach my $event (qw(
+Index: e-smith-proftpd/e-smith-proftpd.spec

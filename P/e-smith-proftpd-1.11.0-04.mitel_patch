@@ -1,0 +1,40 @@
+Index: e-smith-proftpd/createlinks
+diff -u e-smith-proftpd/createlinks:1.5 e-smith-proftpd/createlinks:1.6
+--- e-smith-proftpd/createlinks:1.5	Fri Sep  5 14:59:39 2003
++++ e-smith-proftpd/createlinks	Fri Sep  5 15:34:48 2003
+@@ -2,10 +2,10 @@
+ 
+ use esmith::Build::CreateLinks qw(:all);
+ 
+-safe_symlink("daemontools", "root/etc/rc.d/init.d/proftpd");
+-service_link_enhanced("proftpd", "S85", "7");
+-service_link_enhanced("proftpd", "K25", "6");
+-service_link_enhanced("proftpd", "K25", "0");
++safe_symlink("daemontools", "root/etc/rc.d/init.d/supervise/ftp");
++service_link_enhanced("ftp", "S85", "7");
++service_link_enhanced("ftp", "K25", "6");
++service_link_enhanced("ftp", "K25", "0");
+ 
+ #--------------------------------------------------
+ # actions for console-save event
+Index: e-smith-proftpd/e-smith-proftpd.spec
+diff -u e-smith-proftpd/root/etc/e-smith/events/actions/proftpd-startstop:1.1 e-smith-proftpd/root/etc/e-smith/events/actions/proftpd-startstop:1.2
+--- e-smith-proftpd/root/etc/e-smith/events/actions/proftpd-startstop:1.1	Fri Sep  5 14:33:52 2003
++++ e-smith-proftpd/root/etc/e-smith/events/actions/proftpd-startstop	Fri Sep  5 15:34:48 2003
+@@ -30,7 +30,7 @@
+ my $db = esmith::ConfigDB->open_ro or
+     die "Could not open config db";
+ 
+-my $proftpd = $db->get('protftpd') or
++my $proftpd = $db->get('ftp') or
+     die "Could not get service record for proftpd";
+ 
+ my $status = $proftpd->prop('status') || 'disabled';
+@@ -38,6 +38,6 @@
+ # Start/stop proftpd if required. Will have no effect if
+ # state is already correct
+ system("/usr/local/bin/svc", ($status eq 'enabled') ? "-u" : "-d", 
+-		"/service/proftpd");
++		"/service/ftp");
+ 
+ exit (0);

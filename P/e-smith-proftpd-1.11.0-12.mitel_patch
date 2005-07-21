@@ -1,0 +1,25 @@
+Index: e-smith-proftpd/createlinks
+diff -u e-smith-proftpd/createlinks:1.8 e-smith-proftpd/createlinks:1.9
+--- e-smith-proftpd/createlinks:1.8	Mon Aug 30 16:34:50 2004
++++ e-smith-proftpd/createlinks	Mon Aug 30 16:52:03 2004
+@@ -21,17 +21,13 @@
+     network-create
+     network-delete
+     remoteaccess-update
+-    password-modify
+-    user-create
+-    user-delete))
++    password-modify))
+ {
+     event_link("proftpd-conf", $event, "47");
+ }
+ 
+ foreach my $event (qw(
+-    remoteaccess-update
+-    user-create
+-    user-delete))
++    remoteaccess-update))
+ {
+     event_link("proftpd-startstop", $event, "57");
+ }
+Index: e-smith-proftpd/e-smith-proftpd.spec

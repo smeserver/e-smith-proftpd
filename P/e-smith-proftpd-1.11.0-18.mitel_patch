@@ -1,0 +1,12 @@
+Index: e-smith-proftpd/e-smith-proftpd.spec
+diff -u /dev/null e-smith-proftpd/root/etc/e-smith/templates/var/service/ftp/peers/0/ConcurrencyPerIP:1.1
+--- /dev/null	Wed Mar 16 19:45:13 2005
++++ e-smith-proftpd/root/etc/e-smith/templates/var/service/ftp/peers/0/ConcurrencyPerIP	Wed Mar 16 19:44:39 2005
+@@ -0,0 +1 @@
++C4
+Index: e-smith-proftpd/root/etc/e-smith/templates/var/service/ftp/peers/local/ConcurrencyPerIP
+diff -u /dev/null e-smith-proftpd/root/etc/e-smith/templates/var/service/ftp/peers/local/ConcurrencyPerIP:1.1
+--- /dev/null	Wed Mar 16 19:45:13 2005
++++ e-smith-proftpd/root/etc/e-smith/templates/var/service/ftp/peers/local/ConcurrencyPerIP	Wed Mar 16 19:44:39 2005
+@@ -0,0 +1 @@
++C4

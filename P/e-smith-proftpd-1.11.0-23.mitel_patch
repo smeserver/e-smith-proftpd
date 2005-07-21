@@ -1,0 +1,13 @@
+Index: e-smith-proftpd/createlinks
+diff -u e-smith-proftpd/createlinks:1.17 e-smith-proftpd/createlinks:1.18
+--- e-smith-proftpd/createlinks:1.17	Tue Mar 29 12:27:00 2005
++++ e-smith-proftpd/createlinks	Tue Jun 14 13:48:12 2005
+@@ -43,6 +43,7 @@
+ foreach my $event (qw(
+     bootstrap-console-save
+     network-create
++    remoteaccess-update
+     network-delete
+     ))
+ {
+Index: e-smith-proftpd/e-smith-proftpd.spec

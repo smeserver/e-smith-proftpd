@@ -1,0 +1,39 @@
+Index: e-smith-proftpd/createlinks
+diff -u e-smith-proftpd/createlinks:1.9 e-smith-proftpd/createlinks:1.10
+--- e-smith-proftpd/createlinks:1.9	Mon Aug 30 16:52:03 2004
++++ e-smith-proftpd/createlinks	Wed Feb  9 13:37:01 2005
+@@ -7,6 +7,16 @@
+ service_link_enhanced("ftp", "K25", "6");
+ service_link_enhanced("ftp", "K25", "0");
+ 
++foreach (qw(
++    /etc/proftpd.conf
++    /etc/tcprules/tcp.proftpd
++    /etc/pam.d/ftp
++    /etc/logrotate.d/proftpd
++    /etc/ftpusers
++    ))
++{
++}
++
+ foreach my $event (qw(
+     console-save
+     bootstrap-console-save
+Index: e-smith-proftpd/e-smith-proftpd.spec
+diff -u e-smith-proftpd/root/etc/e-smith/db/configuration/migrate/10proftpd:1.2 e-smith-proftpd/root/etc/e-smith/db/configuration/migrate/10proftpd:removed
+--- e-smith-proftpd/root/etc/e-smith/db/configuration/migrate/10proftpd:1.2	Thu Mar  6 11:46:34 2003
++++ e-smith-proftpd/root/etc/e-smith/db/configuration/migrate/10proftpd	Wed Dec 31 19:00:00 1969
+@@ -1,13 +0,0 @@
+-{
+-    my $mode = $DB->get_value_and_delete('FTPServerMode');
+-    return unless defined $mode;
+-
+-    my $ftp = $DB->get('ftp') || $DB->new_record('ftp')
+-	|| die "Couldn't create new ftp record";
+-    my $status = ($mode eq "off") ? "disabled" : "enabled";
+-    $ftp->merge_props(
+-	    type => 'service',
+-	    status => $status,
+-	    access => $mode,
+-	);
+-}
