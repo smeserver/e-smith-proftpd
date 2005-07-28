@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.11.0
-%define release 23sme01
+%define release 24
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -29,7 +29,7 @@ Patch16: e-smith-proftpd-1.11.0-19.mitel_patch
 Patch17: e-smith-proftpd-1.11.0-20.mitel_patch
 Patch18: e-smith-proftpd-1.11.0-21.mitel_patch
 Patch19: e-smith-proftpd-1.11.0-23.mitel_patch
-Patch20: e-smith-proftpd-1.11.0-masqchange.patch
+Patch20: e-smith-proftpd-1.11.0-24.mitel_patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -40,8 +40,8 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
-* Wed Jul 20 2005 Shad L. Lords <slords@mail.com>
-- [1.11.0-23sme01]
+* Wed Jul 27 2005 Shad Lords <slords@mail.com>
+- [1.11.0-24]
 - Move masq fragement from template to db [SF: 1241416]
 
 * Tue Jun 14 2005 Charlie Brady <charlieb@e-smith.com>

@@ -1,0 +1,18 @@
+Index: e-smith-proftpd/e-smith-proftpd.spec
+diff -u /dev/null e-smith-proftpd/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort:1.1
+--- /dev/null	Wed Jul 27 16:01:09 2005
++++ e-smith-proftpd/root/etc/e-smith/db/configuration/defaults/ftp/TCPPort	Wed Jul 27 16:00:11 2005
+@@ -0,0 +1 @@
++21
+Index: e-smith-proftpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP
+diff -u e-smith-proftpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP:1.6 e-smith-proftpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP:removed
+--- e-smith-proftpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP:1.6	Thu Mar  6 15:11:43 2003
++++ e-smith-proftpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowFTP	Wed Dec 31 19:00:00 1969
+@@ -1,7 +0,0 @@
+-{
+-    my $access = $ftp{access} || "undef";
+-    my $ftpServiceStatus = $ftp{status} || "disabled";
+-
+-    $OUT = allow_tcp_in(21,
+-	($access eq 'public') && ($ftpServiceStatus eq 'enabled'));
+-}
