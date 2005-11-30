@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.11.0
-%define release 24
+%define release 26
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -30,6 +30,7 @@ Patch17: e-smith-proftpd-1.11.0-20.mitel_patch
 Patch18: e-smith-proftpd-1.11.0-21.mitel_patch
 Patch19: e-smith-proftpd-1.11.0-23.mitel_patch
 Patch20: e-smith-proftpd-1.11.0-24.mitel_patch
+Patch21: e-smith-proftpd-1.11.0-25.mitel_patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -40,6 +41,15 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-26
+- Bump release number only
+
+* Wed Oct 12 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.11.0-25]
+- Filter out comments in peers files, to avoid log noise from
+  tcpsvd. Fix name of peers/local templates.metadata file.
+  [SF: 1324719]
+
 * Wed Jul 27 2005 Shad Lords <slords@mail.com>
 - [1.11.0-24]
 - Move masq fragement from template to db [SF: 1241416]
@@ -486,6 +496,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %build
 perl createlinks
