@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.11.0
-%define release 26
+%define release 27
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -31,6 +31,8 @@ Patch18: e-smith-proftpd-1.11.0-21.mitel_patch
 Patch19: e-smith-proftpd-1.11.0-23.mitel_patch
 Patch20: e-smith-proftpd-1.11.0-24.mitel_patch
 Patch21: e-smith-proftpd-1.11.0-25.mitel_patch
+Patch22: e-smith-proftpd-1.11.0-anonymous.patch
+Patch23: e-smith-proftpd-1.11.0-chroot.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -41,6 +43,10 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-27
+- Add chroot for users [SME: 590]
+- Add ability to disable anonymous access [SME: 591]
+
 * Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-26
 - Bump release number only
 
@@ -497,6 +503,8 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
 
 %build
 perl createlinks

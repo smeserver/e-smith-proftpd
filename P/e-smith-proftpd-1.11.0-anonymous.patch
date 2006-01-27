@@ -1,0 +1,73 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary	2003-04-09 07:18:20.000000000 +1000
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary	2006-01-28 09:03:07.335572103 +1100
+@@ -3,7 +3,10 @@
+ # How to handle anonymous FTP logins: chroot to the Primary
+ # i-bay files directory.
+ #------------------------------------------------------------
+-}<Anonymous /home/e-smith/files/ibays/Primary/files>
++	return "" if ($ftp{DisableAnonymous} || 'no') eq 'yes';
++
++	$OUT = << 'EOF';
++<Anonymous /home/e-smith/files/ibays/Primary/files>
+     User public
+     Group public
+     UserAlias anonymous public
+@@ -22,3 +25,5 @@
+         </Limit>
+     </Directory>
+ </Anonymous>
++EOF
++}
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2006-01-28 09:03:56.608999081 +1100
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2006-01-28 09:03:08.070444244 +1100
+@@ -54,25 +54,28 @@
+ 
+ 	# variables: $allow (IP), $pass (bool)
+ 
+-	$OUT .= "\n";
+-	$OUT .= "<Anonymous /home/e-smith/files/ibays/$key/files>\n";
+-	$OUT .= "    User $key\n";
+-	$OUT .= "    Group $key\n";
+-	$OUT .= "    AnonRequirePassword " . ($pass ? "on" : "off") . "\n";
+-	$OUT .= "    UseFtpUsers on\n";
+-	$OUT .= "    MaxClients 10\n";
+-	$OUT .= "    DisplayLogin welcome.msg\n";
+-	$OUT .= "    DisplayFirstChdir .message\n";
+-	$OUT .= "    <Limit LOGIN>\n";
+-	$OUT .= "      Order Allow,Deny\n";
+-	$OUT .= "      Allow from $allow\n";
+-	$OUT .= "      Deny from all\n";
+-	$OUT .= "    </Limit>\n";
+-	$OUT .= "    <Directory *>\n";
+-	$OUT .= "        <Limit WRITE>\n";
+-	$OUT .= "            DenyAll\n";
+-	$OUT .= "        </Limit>\n";
+-	$OUT .= "    </Directory>\n";
+-	$OUT .= "</Anonymous>\n";
++	if ( ($ibay->prop('DisableAnonymous') || 'no') ne 'yes')
++	{
++		$OUT .= "\n";
++		$OUT .= "<Anonymous /home/e-smith/files/ibays/$key/files>\n";
++		$OUT .= "    User $key\n";
++		$OUT .= "    Group $key\n";
++		$OUT .= "    AnonRequirePassword " . ($pass ? "on" : "off") . "\n";
++		$OUT .= "    UseFtpUsers on\n";
++		$OUT .= "    MaxClients 10\n";
++		$OUT .= "    DisplayLogin welcome.msg\n";
++		$OUT .= "    DisplayFirstChdir .message\n";
++		$OUT .= "    <Limit LOGIN>\n";
++		$OUT .= "      Order Allow,Deny\n";
++		$OUT .= "      Allow from $allow\n";
++		$OUT .= "      Deny from all\n";
++		$OUT .= "    </Limit>\n";
++		$OUT .= "    <Directory *>\n";
++		$OUT .= "        <Limit WRITE>\n";
++		$OUT .= "            DenyAll\n";
++		$OUT .= "        </Limit>\n";
++		$OUT .= "    </Directory>\n";
++		$OUT .= "</Anonymous>\n";
++	}
+     }
+ }

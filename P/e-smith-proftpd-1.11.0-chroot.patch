@@ -1,0 +1,30 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot	1970-01-01 10:00:00.000000000 +1000
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot	2006-01-28 09:03:06.629694918 +1100
+@@ -0,0 +1,26 @@
++{
++	use esmith::AccountsDB;
++
++	$OUT = "";
++	my $accounts = esmith::AccountsDB->open;
++	my @users = $accounts->users;
++
++	foreach my $user (@users)
++	{
++		my $chrootDir = $user->prop('ChrootDir') || 'unrestricted';
++		next if $chrootDir eq 'unrestricted';
++
++		if ( $chrootDir =~ m#home$# )
++		{
++			$OUT = "DefaultRoot		/home/e-smith/files/users/".$user->key."/home	".$user->key."\n";
++		}
++		elsif ( $chrootDir =~ m#^/# && -d $chrootDir )
++		{
++			$OUT = "DefaultRoot		$chrootDir	".$user->key."\n";
++		}
++		elsif ( -d "/home/e-smith/files/ibays/$chrootDir" )
++		{
++			$OUT = "DefaultRoot		/home/e-smith/files/ibays/$chrootDir	".$user->key."\n";
++		}
++	}
++}
