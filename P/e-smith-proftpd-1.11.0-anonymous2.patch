@@ -1,0 +1,55 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay
+--- e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2006-01-28 11:49:01.921585998 +1100
++++ mezzanine_patched_e-smith-proftpd-1.11.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2006-01-28 11:48:48.481924348 +1100
+@@ -54,28 +54,28 @@
+ 
+ 	# variables: $allow (IP), $pass (bool)
+ 
+-	if ( ($ibay->prop('DisableAnonymous') || 'no') ne 'yes')
+-	{
+-		$OUT .= "\n";
+-		$OUT .= "<Anonymous /home/e-smith/files/ibays/$key/files>\n";
+-		$OUT .= "    User $key\n";
+-		$OUT .= "    Group $key\n";
+-		$OUT .= "    AnonRequirePassword " . ($pass ? "on" : "off") . "\n";
+-		$OUT .= "    UseFtpUsers on\n";
+-		$OUT .= "    MaxClients 10\n";
+-		$OUT .= "    DisplayLogin welcome.msg\n";
+-		$OUT .= "    DisplayFirstChdir .message\n";
+-		$OUT .= "    <Limit LOGIN>\n";
+-		$OUT .= "      Order Allow,Deny\n";
+-		$OUT .= "      Allow from $allow\n";
+-		$OUT .= "      Deny from all\n";
+-		$OUT .= "    </Limit>\n";
+-		$OUT .= "    <Directory *>\n";
+-		$OUT .= "        <Limit WRITE>\n";
+-		$OUT .= "            DenyAll\n";
+-		$OUT .= "        </Limit>\n";
+-		$OUT .= "    </Directory>\n";
+-		$OUT .= "</Anonymous>\n";
+-	}
++	return "" if ($ftp{DisableAnonymous} || 'no') eq 'yes';
++	return "" if ($ibay->prop('DisableAnonymous') || 'no') eq 'yes';
++
++	$OUT .= "\n";
++	$OUT .= "<Anonymous /home/e-smith/files/ibays/$key/files>\n";
++	$OUT .= "    User $key\n";
++	$OUT .= "    Group $key\n";
++	$OUT .= "    AnonRequirePassword " . ($pass ? "on" : "off") . "\n";
++	$OUT .= "    UseFtpUsers on\n";
++	$OUT .= "    MaxClients 10\n";
++	$OUT .= "    DisplayLogin welcome.msg\n";
++	$OUT .= "    DisplayFirstChdir .message\n";
++	$OUT .= "    <Limit LOGIN>\n";
++	$OUT .= "      Order Allow,Deny\n";
++	$OUT .= "      Allow from $allow\n";
++	$OUT .= "      Deny from all\n";
++	$OUT .= "    </Limit>\n";
++	$OUT .= "    <Directory *>\n";
++	$OUT .= "        <Limit WRITE>\n";
++	$OUT .= "            DenyAll\n";
++	$OUT .= "        </Limit>\n";
++	$OUT .= "    </Directory>\n";
++	$OUT .= "</Anonymous>\n";
+     }
+ }
