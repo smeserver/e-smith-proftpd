@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.11.0
-%define release 28
+%define release 29
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -44,6 +44,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Tue Feb 28 2006 Charlie Brady <charlie_brady@mitel.com> 1.11.0-29
+- Back out the chroot patch for now. [SME: 590]
+
 * Fri Jan 27 2006 Shad L. Lords <slords@mail.com> 1.11.0-28
 - Disable anonymous ibays if globally disabled.
 
@@ -508,7 +511,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
+#%patch23 -p1
 %patch24 -p1
 
 %build
