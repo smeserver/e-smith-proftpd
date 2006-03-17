@@ -1,39 +1,14 @@
 Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
-%define version 1.11.0
-%define release 29
+%define version 1.12.0
+%define release 01
 Version: %{version}
 Release: %{release}
 License: GPL
 Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-proftpd-1.11.0-02.mitel_patch
-Patch1: e-smith-proftpd-1.11.0-03.mitel_patch
-Patch2: e-smith-proftpd-1.11.0-04.mitel_patch
-Patch3: e-smith-proftpd-1.11.0-05.mitel_patch
-Patch4: e-smith-proftpd-1.11.0-06.mitel_patch
-Patch5: e-smith-proftpd-1.11.0-08.mitel_patch
-Patch6: e-smith-proftpd-1.11.0-09.mitel_patch
-Patch7: e-smith-proftpd-1.11.0-10.mitel_patch
-Patch8: e-smith-proftpd-1.11.0-11.mitel_patch
-Patch9: e-smith-proftpd-1.11.0-12.mitel_patch
-Patch10: e-smith-proftpd-1.11.0-13.mitel_patch
-Patch11: e-smith-proftpd-1.11.0-14.mitel_patch
-Patch12: e-smith-proftpd-1.11.0-15.mitel_patch
-Patch13: e-smith-proftpd-1.11.0-16.mitel_patch
-Patch14: e-smith-proftpd-1.11.0-17.mitel_patch
-Patch15: e-smith-proftpd-1.11.0-18.mitel_patch
-Patch16: e-smith-proftpd-1.11.0-19.mitel_patch
-Patch17: e-smith-proftpd-1.11.0-20.mitel_patch
-Patch18: e-smith-proftpd-1.11.0-21.mitel_patch
-Patch19: e-smith-proftpd-1.11.0-23.mitel_patch
-Patch20: e-smith-proftpd-1.11.0-24.mitel_patch
-Patch21: e-smith-proftpd-1.11.0-25.mitel_patch
-Patch22: e-smith-proftpd-1.11.0-anonymous.patch
-Patch23: e-smith-proftpd-1.11.0-chroot.patch
-Patch24: e-smith-proftpd-1.11.0-anonymous2.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -44,6 +19,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Thu Mar 16 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-01
+- Roll stable stream version. [SME: 1016]
+
 * Tue Feb 28 2006 Charlie Brady <charlie_brady@mitel.com> 1.11.0-29
 - Back out the chroot patch for now. [SME: 590]
 
@@ -488,31 +466,6 @@ Configuration files and templates for the ProFTPd ftp server.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-#%patch23 -p1
-%patch24 -p1
 
 %build
 perl createlinks
