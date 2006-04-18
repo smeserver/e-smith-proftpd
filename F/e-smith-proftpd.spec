@@ -2,13 +2,14 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 01
+%define release 02
 Version: %{version}
 Release: %{release}
 License: GPL
 Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
+Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
@@ -19,6 +20,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Tue Apr 18 2006 Gordon Rowell <gordonr@gormand.com.au> 1.12.0-02
+- Force permissions on /var/log/proftpd in log/run script [SME: 1267]
+
 * Thu Mar 16 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-01
 - Roll stable stream version. [SME: 1016]
 
@@ -466,6 +470,7 @@ Configuration files and templates for the ProFTPd ftp server.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 perl createlinks
