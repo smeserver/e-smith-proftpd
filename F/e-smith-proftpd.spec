@@ -2,16 +2,16 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 03
+%define release 4
 Version: %{version}
-Release: %{release}
+Release: %smerelease %{release}
+Packager: %{_packager}
 License: GPL
 Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
 Patch1: e-smith-proftpd-1.12.0-ftpusersfix.patch
-Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -21,6 +21,10 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Thu Dec 07 2006 Shad L. Lords <slords@mail.com>
+- Update to new release naming.  No functional changes.
+- Make Packager generic
+
 * Thu Sep 21 2006 Gavin Weight <gweight@gmail.com> 1.12.0-03
 - Expand /etc/ftpusers if user is locked/password reset. [SME: 1921]
 
