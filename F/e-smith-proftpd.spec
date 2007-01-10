@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 5
+%define release 6
 Version: %{version}
 Release: %smerelease %{release}
 Packager: %{_packager}
@@ -13,6 +13,7 @@ Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
 Patch1: e-smith-proftpd-1.12.0-ftpusersfix.patch
 Patch2: e-smith-proftpd-1.12.0-chroot.patch
+Patch3: e-smith-proftpd-1.12.0-globalroot.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -22,6 +23,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Wed Jan 10 2007 Shad L. Lords <slords@mail.com> 1.12.0-6
+- Add global override for chroot path. [SME: 590]
+
 * Wed Jan 03 2007 Shad L. Lords <slords@mail.com> 1.12.0-5
 - Add fixed chroot patch back in. [SME: 590]
 
@@ -485,6 +489,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 perl createlinks
