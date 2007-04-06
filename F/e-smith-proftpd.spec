@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 6
+%define release 7
 Version: %{version}
 Release: %smerelease %{release}
 Packager: %{_packager}
@@ -14,6 +14,7 @@ Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
 Patch1: e-smith-proftpd-1.12.0-ftpusersfix.patch
 Patch2: e-smith-proftpd-1.12.0-chroot.patch
 Patch3: e-smith-proftpd-1.12.0-globalroot.patch
+Patch4: e-smith-proftpd-1.12.0-logdir.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -23,6 +24,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Fri Apr 06 2007 Shad L. Lords <slords@mail.com> 1.12.0-7
+- Rename log directory from proftpd to ftp [SME: 2706]
+
 * Wed Jan 10 2007 Shad L. Lords <slords@mail.com> 1.12.0-6
 - Add global override for chroot path. [SME: 590]
 
@@ -490,6 +494,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 perl createlinks
@@ -502,7 +507,7 @@ touch root/var/service/proftpd/down
 
 mkdir -p root/var/service/proftpd/log/supervise
 
-mkdir -p root/var/log/proftpd
+mkdir -p root/var/log/ftp
 
 mkdir -p root/var/service/proftpd/env
 mkdir -p root/var/service/proftpd/peers
@@ -522,7 +527,7 @@ rm -f %{name}-%{version}-%{release}-filelist
     --dir /var/service/proftpd/log/supervise 'attr(0700,root,root)' \
     --dir /var/service/proftpd/supervise 'attr(0700,root,root)' \
     --file /var/service/proftpd/log/run 'attr(0755,root,root)' \
-    --dir /var/log/proftpd 'attr(2750,smelog,smelog)' \
+    --dir /var/log/ftp 'attr(2750,smelog,smelog)' \
     > %{name}-%{version}-%{release}-filelist
 echo "%doc COPYING" >> %{name}-%{version}-%{release}-filelist
 
