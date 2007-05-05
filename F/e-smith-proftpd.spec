@@ -4,10 +4,8 @@ Name: %{name}
 %define version 1.12.0
 %define release 8
 Version: %{version}
-Release: %smerelease %{release}
-Packager: %{_packager}
+Release: %{release}%{?dist}
 License: GPL
-Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
@@ -25,6 +23,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
+- Clean up spec so package can be built by koji/plague
+
 * Fri Apr 06 2007 Shad L. Lords <slords@mail.com> 1.12.0-8
 - Change perms for ftpusers file. [SME: 2841]
 
