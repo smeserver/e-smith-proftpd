@@ -1,0 +1,9 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates.metadata/etc/ftpusers mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates.metadata/etc/ftpusers
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates.metadata/etc/ftpusers	2006-03-16 17:09:50.000000000 -0700
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates.metadata/etc/ftpusers	2007-04-06 14:46:44.000000000 -0600
+@@ -1,4 +1,4 @@
+ MORE_DATA={ACCOUNTS_DENY_ALLOW_PUBLIC => 1}
+ TEMPLATE_PATH="/etc/e-smith/pam/accounts.deny"
+ OUTPUT_FILENAME="/etc/ftpusers"
+-PERMS=0600
++PERMS=0644

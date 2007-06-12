@@ -1,0 +1,12 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot	2007-01-10 07:46:16.000000000 -0700
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05Chroot	2007-01-10 07:45:32.000000000 -0700
+@@ -7,7 +7,7 @@
+ 
+ 	foreach my $user (@users)
+ 	{
+-		my $chrootDir = $user->prop('ChrootDir') || next;
++		my $chrootDir = $user->prop('ChrootDir') || $ftp{'ChrootDir'} || next;
+ 
+ 		if ( $chrootDir =~ m#^/# && -d $chrootDir )
+ 		{
