@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 8
+%define release 9
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -14,6 +14,7 @@ Patch2: e-smith-proftpd-1.12.0-chroot.patch
 Patch3: e-smith-proftpd-1.12.0-globalroot.patch
 Patch4: e-smith-proftpd-1.12.0-logdir.patch
 Patch5: e-smith-proftpd-1.12.0-ftpuser_perm.patch
+Patch6: e-smith-proftpd-1-12-0-MovePam_d_ftpTemplates.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -23,6 +24,10 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Tue Jun 26 2007 Gavin Weight <gweight@gmail.com> 1.12.0-9
+- Create pam.d directory and move ftp/proftpd templates into pam.d.
+[SME: 2762]
+
 * Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
 - Clean up spec so package can be built by koji/plague
 
@@ -501,6 +506,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 perl createlinks
@@ -519,6 +525,13 @@ mkdir -p root/var/service/proftpd/env
 mkdir -p root/var/service/proftpd/peers
 mkdir -p root/etc/e-smith/templates/var/service/proftpd/peers/{0,local}
 touch root/etc/e-smith/templates/var/service/proftpd/peers/{0,local}/template-begin
+
+for file in ftp proftpd
+do
+    mkdir -p root/etc/e-smith/templates/etc/pam.d/$file
+    ln -s /etc/e-smith/templates-default/template-begin-pam \
+      root/etc/e-smith/templates/etc/pam.d/$file/template-begin
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
