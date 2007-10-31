@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 9
+%define release 10
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -15,6 +15,7 @@ Patch3: e-smith-proftpd-1.12.0-globalroot.patch
 Patch4: e-smith-proftpd-1.12.0-logdir.patch
 Patch5: e-smith-proftpd-1.12.0-ftpuser_perm.patch
 Patch6: e-smith-proftpd-1-12-0-MovePam_d_ftpTemplates.patch
+Patch7:	e-smith-proftpd-1.12.0-RenameDisplayFirstChdirToDisplayChdir.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -24,6 +25,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Tue Jun 26 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
+- Rename DisplayFirstChdir to DisplayChdir.  [SME: 3479]
+
 * Tue Jun 26 2007 Gavin Weight <gweight@gmail.com> 1.12.0-9
 - Create pam.d directory and move ftp/proftpd templates into pam.d.
 [SME: 2762]
@@ -507,6 +511,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 perl createlinks
