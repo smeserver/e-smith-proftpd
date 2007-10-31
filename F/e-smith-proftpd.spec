@@ -25,7 +25,7 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
-* Tue Jun 26 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
+* Wed Oct 31 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
 - Rename DisplayFirstChdir to DisplayChdir.  [SME: 3479]
 
 * Tue Jun 26 2007 Gavin Weight <gweight@gmail.com> 1.12.0-9
