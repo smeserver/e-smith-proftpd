@@ -1,0 +1,34 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayChdir mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayChdir
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayChdir	1970-01-01 01:00:00.000000000 +0100
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayChdir	2007-10-29 19:19:52.000000000 +0000
+@@ -0,0 +1 @@
++DisplayChdir	.message
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayFirstChdir mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayFirstChdir
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayFirstChdir	2002-05-03 19:05:47.000000000 +0100
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/05DisplayFirstChdir	1970-01-01 01:00:00.000000000 +0100
+@@ -1 +0,0 @@
+-DisplayFirstChdir	.message
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary	2006-03-17 00:09:50.000000000 +0000
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/50AnonymousPrimary	2007-10-29 19:20:24.000000000 +0000
+@@ -15,7 +15,7 @@
+     UseFtpUsers on
+     MaxClients 10
+     DisplayLogin welcome.msg
+-    DisplayFirstChdir .message
++    DisplayChdir .message
+     <Limit LOGIN>
+         AllowAll
+     </Limit>
+diff -Nur -x '*.orig' -x '*.rej' e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay
+--- e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2006-03-17 00:09:50.000000000 +0000
++++ mezzanine_patched_e-smith-proftpd-1.12.0/root/etc/e-smith/templates/etc/proftpd.conf/60AnonymousIBay	2007-10-29 19:20:43.000000000 +0000
+@@ -65,7 +65,7 @@
+ 	    $OUT .= "    UseFtpUsers on\n";
+ 	    $OUT .= "    MaxClients 10\n";
+ 	    $OUT .= "    DisplayLogin welcome.msg\n";
+-	    $OUT .= "    DisplayFirstChdir .message\n";
++	    $OUT .= "    DisplayChdir .message\n";
+ 	    $OUT .= "    <Limit LOGIN>\n";
+ 	    $OUT .= "      Order Allow,Deny\n";
+ 	    $OUT .= "      Allow from $allow\n";
