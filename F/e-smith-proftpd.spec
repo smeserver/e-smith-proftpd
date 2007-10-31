@@ -15,7 +15,7 @@ Patch3: e-smith-proftpd-1.12.0-globalroot.patch
 Patch4: e-smith-proftpd-1.12.0-logdir.patch
 Patch5: e-smith-proftpd-1.12.0-ftpuser_perm.patch
 Patch6: e-smith-proftpd-1-12-0-MovePam_d_ftpTemplates.patch
-Patch7:	e-smith-proftpd-1.12.0-RenameDisplayFirstChdirToDisplayChdir.patch
+Patch7: e-smith-proftpd-1.12.0-RenameDisplayFirstChdirToDisplayChdir.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
