@@ -2,7 +2,7 @@ Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
 %define version 1.12.0
-%define release 10
+%define release 11
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -16,6 +16,7 @@ Patch4: e-smith-proftpd-1.12.0-logdir.patch
 Patch5: e-smith-proftpd-1.12.0-ftpuser_perm.patch
 Patch6: e-smith-proftpd-1-12-0-MovePam_d_ftpTemplates.patch
 Patch7: e-smith-proftpd-1.12.0-RenameDisplayFirstChdirToDisplayChdir.patch
+Patch8: e-smith-proftpd-1.12.0-ShowSymlinks.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -25,6 +26,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Wed Jan 09 2008 Stephen Noble <support@dungog.net> 1.12.11
+- ShowSymlinks off [SME: 993]
+
 * Wed Oct 31 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
 - Rename DisplayFirstChdir to DisplayChdir.  [SME: 3479]
 
@@ -512,6 +516,7 @@ Configuration files and templates for the ProFTPd ftp server.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 perl createlinks
