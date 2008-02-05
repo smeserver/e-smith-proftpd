@@ -26,7 +26,7 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
-* Wed Jan 09 2008 Stephen Noble <support@dungog.net> 1.12.11
+* Wed Jan 09 2008 Stephen Noble <support@dungog.net> 1.12.0-11
 - ShowSymlinks off [SME: 993]
 
 * Wed Oct 31 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
