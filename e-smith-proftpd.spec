@@ -1,22 +1,15 @@
+# $Id: e-smith-proftpd.spec,v 1.6 2008/10/07 19:13:44 slords Exp $
+
 Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
 Name: %{name}
-%define version 1.12.0
-%define release 11
+%define version 2.2.0
+%define release 1
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-proftpd-1.12.0-LogDirPerms.patch
-Patch1: e-smith-proftpd-1.12.0-ftpusersfix.patch
-Patch2: e-smith-proftpd-1.12.0-chroot.patch
-Patch3: e-smith-proftpd-1.12.0-globalroot.patch
-Patch4: e-smith-proftpd-1.12.0-logdir.patch
-Patch5: e-smith-proftpd-1.12.0-ftpuser_perm.patch
-Patch6: e-smith-proftpd-1-12-0-MovePam_d_ftpTemplates.patch
-Patch7: e-smith-proftpd-1.12.0-RenameDisplayFirstChdirToDisplayChdir.patch
-Patch8: e-smith-proftpd-1.12.0-ShowSymlinks.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 BuildArchitectures: noarch
 BuildRequires: e-smith-devtools
@@ -26,6 +19,9 @@ Requires: iptables
 AutoReqProv: no
 
 %changelog
+* Tue Oct 7 2008 Shad L. Lords <slords@mail.com> 2.2.0-1.sme
+- Roll new stream to separate sme7/sme8 trees [SME: 4633]
+
 * Wed Jan 09 2008 Stephen Noble <support@dungog.net> 1.12.0-11
 - ShowSymlinks off [SME: 993]
 
@@ -508,15 +504,6 @@ Configuration files and templates for the ProFTPd ftp server.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 %build
 perl createlinks
