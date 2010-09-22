@@ -1,4 +1,4 @@
-# $Id: e-smith-proftpd.spec,v 1.7 2010/09/22 18:09:53 vip-ire Exp $
+# $Id: e-smith-proftpd.spec,v 1.8 2010/09/22 18:10:56 vip-ire Exp $
 
 Summary: e-smith specific proftpd configuration files and templates
 %define name e-smith-proftpd
@@ -21,7 +21,7 @@ AutoReqProv: no
 
 %changelog
 * Wed Sep 22 2010 Daniel Berteaud <daniel@firewall-services.com> 2.2.0-2.sme
-- Add PersistentPasswd directive to force proftpd to use pam 
+- Add PersistentPasswd directive to force proftpd to use pam [SME: 6219]
 
 * Tue Oct 7 2008 Shad L. Lords <slords@mail.com> 2.2.0-1.sme
 - Roll new stream to separate sme7/sme8 trees [SME: 4633]
